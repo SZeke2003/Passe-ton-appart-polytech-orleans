@@ -447,6 +447,9 @@ useEffect(() => {
 
   const filteredListings = useMemo(() => {
     return listings.filter((item) => {
+      // On exclut l'annonce de bienvenue des résultats de recherche/filtres
+      if (item.id === 'welcome-bde') return false;
+
       const totalRent = Number(item.rent) + Number(item.charges);
       const matchesSearch =
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
