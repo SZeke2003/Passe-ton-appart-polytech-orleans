@@ -1009,7 +1009,7 @@ export default function PasseTonAppart() {
 
   return (
     <div
-      className="min-h-screen bg-[#FAF8F5] text-zinc-900 selection:bg-orange-500 selection:text-white"
+      className="min-h-screen w-full max-w-full bg-[#FAF8F5] text-zinc-900 selection:bg-orange-500 selection:text-white overflow-x-hidden"
       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
     >
       <style>{`
@@ -1046,8 +1046,8 @@ export default function PasseTonAppart() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 w-full bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/80">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
           <nav className="hidden lg:flex items-center bg-white border border-stone-200/90 rounded-full p-1.5 shadow-sm">
             <button
               onClick={() => scrollToSection('hero-section')}
@@ -1127,7 +1127,7 @@ export default function PasseTonAppart() {
 
       <section
         id="hero-section"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8"
+        className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-6 pb-8"
       >
         <div className="bg-white rounded-[2.2rem] p-5 sm:p-8 lg:p-10 shadow-xl shadow-stone-200/70 border border-stone-200/90 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-stretch">
@@ -1414,7 +1414,7 @@ export default function PasseTonAppart() {
 
       <section
         id="recherche-section"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8"
+        className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-4 pb-8"
       >
         <div className="bg-white rounded-3xl sm:rounded-full p-3 sm:px-6 sm:py-3.5 shadow-lg shadow-stone-200/60 border border-stone-200/90">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
@@ -1528,7 +1528,7 @@ export default function PasseTonAppart() {
 
       <main
         id="annonces-section"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16"
+        className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pb-16"
       >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
@@ -1725,7 +1725,7 @@ export default function PasseTonAppart() {
 
       <section
         id="how-it-works"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20"
+        className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pb-20"
       >
         <div className="rounded-[2.2rem] bg-gradient-to-br from-[#9A3412] via-[#C2410C] to-[#EA580C] p-3 sm:p-5 text-white shadow-2xl mb-6">
           <div className="border border-white/25 rounded-[1.7rem] p-6 sm:p-10">
