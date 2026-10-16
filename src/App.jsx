@@ -443,7 +443,7 @@ const EMPTY_FORM_STATE = {
 };
 
 export default function PasseTonAppart() {
-  const [listings, setListings] = useState(INITIAL_LISTINGS);
+  const [listings, setListings] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoadingDb, setIsLoadingDb] = useState(true);
   const hasSeededRef = useRef(false);
@@ -522,75 +522,42 @@ export default function PasseTonAppart() {
     return () => unsubscribeAuth();
   }, []);
 
-  // 2. Synchronisation en temps réel avec la collection Firestore
-  useEffect(() => {
-    if (!user || !db) return;
+// 2. Synchronisation en temps réel avec la collection Firestore
+useEffect(() => {
+  if (!user || !db) return;
 
-    const listingsCollection = collection(
-      db,
-      'artifacts',
-      appId,
-      'public',
-      'data',
-      'listings'
-    );
+  const listingsCollection = collection(
+    db,
+    'artifacts',
+    appId,
+    'public',
+    'data',
+    'listings'
+  );
 
-    const unsubscribeSnapshot = onSnapshot(
-      listingsCollection,
-      async (snapshot) => {
-        if (snapshot.empty && !hasSeededRef.current) {
-          hasSeededRef.current = true;
-          try {
-            await Promise.all(
-              INITIAL_LISTINGS.map((item, index) =>
-                setDoc(
-                  doc(
-                    db,
-                    'artifacts',
-                    appId,
-                    'public',
-                    'data',
-                    'listings',
-                    item.id
-                  ),
-                  {
-                    ...item,
-                    createdAtTimestamp: Date.now() - index * 60000,
-                  }
-                )
-              )
-            );
-          } catch (seedError) {
-            console.error('Erreur initialisation base Firestore :', seedError);
-          }
-          setIsLoadingDb(false);
-          return;
-        }
+  const unsubscribeSnapshot = onSnapshot(
+    listingsCollection,
+    (snapshot) => {
+      const liveListings = snapshot.docs.map((docSnap) => ({
+        ...docSnap.data(),
+        id: docSnap.id,
+      }));
 
-        const liveListings = snapshot.docs.map((docSnap) => ({
-          ...docSnap.data(),
-          id: docSnap.id,
-        }));
+      liveListings.sort(
+        (a, b) => (b.createdAtTimestamp || 0) - (a.createdAtTimestamp || 0)
+      );
 
-        liveListings.sort(
-          (a, b) => (b.createdAtTimestamp || 0) - (a.createdAtTimestamp || 0)
-        );
+      setListings(liveListings);
+      setIsLoadingDb(false);
+    },
+    (error) => {
+      console.error('Erreur synchronisation Firestore :', error);
+      setIsLoadingDb(false);
+    }
+  );
 
-        if (liveListings.length > 0) {
-          setListings(liveListings);
-        } else {
-          setListings([]);
-        }
-        setIsLoadingDb(false);
-      },
-      (error) => {
-        console.error('Erreur synchronisation Firestore :', error);
-        setIsLoadingDb(false);
-      }
-    );
-
-    return () => unsubscribeSnapshot();
-  }, [user]);
+  return () => unsubscribeSnapshot();
+}, [user]);
 
   const safeHeroIndex = listings.length > 0 ? heroIndex % listings.length : 0;
   const heroListing = listings[safeHeroIndex] || INITIAL_LISTINGS[0];
