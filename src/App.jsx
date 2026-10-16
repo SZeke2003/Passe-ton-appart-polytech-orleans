@@ -365,11 +365,38 @@ useEffect(() => {
 
   const unsubscribeSnapshot = onSnapshot(
     listingsCollection,
-    (snapshot) => {
-      const liveListings = snapshot.docs.map((docSnap) => ({
+    async (snapshot) => {
+      let liveListings = snapshot.docs.map((docSnap) => ({
         ...docSnap.data(),
         id: docSnap.id,
       }));
+
+      // Si la base contient d'autres annonces en plus de l'annonce de bienvenue, on supprime l'annonce de bienvenue
+      if (liveListings.length > 1 && liveListings.some(item => item.id === 'welcome-bde')) {
+        try {
+          await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'listings', 'welcome-bde'));
+          liveListings = liveListings.filter(item => item.id !== 'welcome-bde');
+        } catch (err) {
+          console.error('Erreur suppression auto welcome :', err);
+        }
+      }
+
+      // Si la base est totalement vide, on injecte l'annonce de bienvenue par défaut
+      if (liveListings.length === 0) {
+        const welcomeItem = INITIAL_LISTINGS[0];
+        try {
+          await setDoc(
+            doc(db, 'artifacts', appId, 'public', 'data', 'listings', welcomeItem.id),
+            {
+              ...welcomeItem,
+              createdAtTimestamp: Date.now(),
+            }
+          );
+          liveListings = [welcomeItem];
+        } catch (err) {
+          console.error('Erreur création auto welcome :', err);
+        }
+      }
 
       liveListings.sort(
         (a, b) => (b.createdAtTimestamp || 0) - (a.createdAtTimestamp || 0)
