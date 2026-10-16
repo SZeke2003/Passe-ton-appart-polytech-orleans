@@ -1293,9 +1293,9 @@ useEffect(() => {
                 </div>
                 <input
                   type="range"
-                  min="300"
-                  max="750"
-                  step="10"
+                  min="200"
+                  max="900"
+                  step="25"
                   value={maxBudget}
                   onChange={(e) => setMaxBudget(Number(e.target.value))}
                   className="w-full accent-orange-600 h-1.5 bg-stone-200 rounded-lg cursor-pointer mt-1"
