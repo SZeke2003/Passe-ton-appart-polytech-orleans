@@ -96,7 +96,37 @@ const firebaseApp = activeFirebaseConfig
 const auth = firebaseApp ? getAuth(firebaseApp) : null;
 const db = firebaseApp ? getFirestore(firebaseApp) : null;
 
-const INITIAL_LISTINGS = [];
+const INITIAL_LISTINGS = [
+  {
+    id: 'welcome-bde',
+    title: '👋 Bienvenue sur Passe ton Appart ! (Poste ton annonce)',
+    type: 'Studio / T1',
+    sector: 'Campus/La Source',
+    address: 'Polytech Orléans, 45100 Orléans',
+    rent: 0,
+    charges: 0,
+    surface: 0,
+    availableFrom: '2026-06-01',
+    furnished: true,
+    roommatesCount: 1,
+    dpe: 'A',
+    secretCode: 'POLYTECH2026',
+    amenities: ['Meublé', 'Proche Tram A'],
+    images: [
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
+    ],
+    studentName: 'BDE Polytech Orléans',
+    studentPromo: 'Bureau des Élèves',
+    studentPhone: '06 00 00 00 00',
+    studentAvatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    honestReview:
+      "C'est ici que s'afficheront les apparts transmis par les élèves de l'école. Clique sur 'Passer mon appart' en haut pour publier le tien !",
+    distanceInfo: 'Au cœur de l’école',
+    repriseInfo: 'Plateforme officielle BDE',
+    createdAt: "À l'instant",
+  },
+];
 
 const SECTORS = [
   'Tous',
