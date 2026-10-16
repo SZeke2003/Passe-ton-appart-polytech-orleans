@@ -538,34 +538,23 @@ export default function PasseTonAppart() {
     const unsubscribeSnapshot = onSnapshot(
       listingsCollection,
       async (snapshot) => {
-        if (snapshot.empty && !hasSeededRef.current) {
-          hasSeededRef.current = true;
-          try {
-            await Promise.all(
-              INITIAL_LISTINGS.map((item, index) =>
-                setDoc(
-                  doc(
-                    db,
-                    'artifacts',
-                    appId,
-                    'public',
-                    'data',
-                    'listings',
-                    item.id
-                  ),
-                  {
-                    ...item,
-                    createdAtTimestamp: Date.now() - index * 60000,
-                  }
-                )
-              )
-            );
-          } catch (seedError) {
-            console.error('Erreur initialisation base Firestore :', seedError);
-          }
-          setIsLoadingDb(false);
-          return;
-        }
+        const liveListings = snapshot.docs.map((docSnap) => ({
+          ...docSnap.data(),
+          id: docSnap.id,
+        }));
+
+        liveListings.sort(
+          (a, b) => (b.createdAtTimestamp || 0) - (a.createdAtTimestamp || 0)
+        );
+
+        setListings(liveListings);
+        setIsLoadingDb(false);
+      },
+      (error) => {
+        console.error('Erreur synchronisation Firestore :', error);
+        setIsLoadingDb(false);
+      }
+    );
 
         const liveListings = snapshot.docs.map((docSnap) => ({
           ...docSnap.data(),
