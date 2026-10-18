@@ -839,6 +839,14 @@ useEffect(() => {
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+        html, body, #root {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background-color: #FAF8F5 !important;
+          display: block !important;
+        }
         .font-display { font-family: 'Syne', sans-serif; }
         .font-serif-editorial { font-family: 'Instrument Serif', serif; }
         .font-hand { font-family: 'Caveat', cursive; }
