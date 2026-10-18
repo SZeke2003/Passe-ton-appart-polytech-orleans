@@ -1622,33 +1622,33 @@ useEffect(() => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-white/25">
-              <div className="flex items-center gap-3 border-r border-white/15 pr-3">
-                <span className="font-display text-3xl sm:text-4xl font-extrabold text-white">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 pt-6 border-t border-white/25">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-3 border-r border-white/15 pr-3">
+                <span className="font-display text-2xl sm:text-4xl font-extrabold text-white shrink-0">
                   100%
                 </span>
                 <span className="text-[11px] text-orange-100/85 leading-tight">
                   Entre élèves de Polytech Orléans
                 </span>
               </div>
-              <div className="flex items-center gap-3 lg:border-r border-white/15 pr-3">
-                <span className="font-display text-3xl sm:text-4xl font-extrabold text-white">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-3 lg:border-r border-white/15 pr-2 sm:pr-3">
+                <span className="font-display text-2xl sm:text-4xl font-extrabold text-white shrink-0">
                   06
                 </span>
                 <span className="text-[11px] text-orange-100/85 leading-tight">
                   Secteurs clés d'Orléans & Olivet couverts
                 </span>
               </div>
-              <div className="flex items-center gap-3 border-r border-white/15 pr-3">
-                <span className="font-display text-2xl sm:text-4xl font-extrabold text-white">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-3 border-r border-white/15 pr-3">
+                <span className="font-display text-2xl sm:text-4xl font-extrabold text-white shrink-0">
                   2<span className="text-base font-normal">min</span>
                 </span>
                 <span className="text-[11px] text-orange-100/85 leading-tight">
                   Pour déposer ses photos en glisser-déposer
                 </span>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="font-display text-2xl sm:text-3xl font-extrabold text-white">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-3 pr-2 sm:pr-0">
+                <span className="font-display text-2xl sm:text-3xl font-extrabold text-white shrink-0">
                   Direct
                 </span>
                 <span className="text-[11px] text-orange-100/85 leading-tight">
