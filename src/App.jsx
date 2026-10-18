@@ -756,8 +756,6 @@ useEffect(() => {
         studentName: formData.studentName,
         studentPromo: formData.studentPromo || 'Élève Polytech Orléans',
         studentPhone: formData.studentPhone,
-        studentAvatar:
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80',
         honestReview:
           formData.honestReview ||
           'Appartement très agréable, contacte-moi sur WhatsApp pour plus de détails ou pour visiter !',
@@ -831,6 +829,15 @@ useEffect(() => {
     }
     return items;
   }, [listings, safeHeroIndex]);
+
+  const getInitials = (name) => {
+    if (!name) return 'EP';
+    const parts = name.trim().split(' ');
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+  };
 
   return (
     <div
@@ -1130,11 +1137,9 @@ useEffect(() => {
                   onClick={() => openListingModal(heroListing)}
                   className="cursor-pointer bg-zinc-900/85 backdrop-blur-md text-white pl-2 pr-4 py-1.5 rounded-full border border-white/15 flex items-center gap-2.5 shadow-lg hover:bg-orange-600 transition"
                 >
-                  <img
-                    src={heroListing.studentAvatar}
-                    alt={heroListing.studentName}
-                    className="w-7 h-7 rounded-full object-cover border border-orange-400"
-                  />
+                  <div className="w-7 h-7 rounded-full bg-orange-600 text-white flex items-center justify-center font-extrabold text-[10px] border border-orange-400 shrink-0">
+                    {getInitials(heroListing.studentName)}
+                  </div>
                   <div className="text-left">
                     <p className="text-[11px] font-bold leading-none">
                       {heroListing.studentName}
