@@ -113,13 +113,13 @@ const INITIAL_LISTINGS = [
     secretCode: 'POLYTECH2026',
     amenities: ['Meublé', 'Proche Tram A'],
     images: [
-      'https://fondsdestudiophoto.eu/5739-large_default/fond-vinyle-blanc.jpg',
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
     ],
     studentName: 'BDE Polytech Orléans',
     studentPromo: 'Bureau des Élèves',
     studentPhone: '06 00 00 00 00',
     studentAvatar:
-      'https://fondsdestudiophoto.eu/5739-large_default/fond-vinyle-blanc.jpg',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     honestReview:
       "C'est ici que s'afficheront les apparts transmis par les élèves de l'école. Clique sur 'Passer mon appart' en haut pour publier le tien !",
     distanceInfo: 'Au cœur de l’école',
