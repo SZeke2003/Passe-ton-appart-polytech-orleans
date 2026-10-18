@@ -868,13 +868,9 @@ useEffect(() => {
           <span className="hidden md:flex items-center gap-3 text-stone-400">
             <span>DE PROMO EN PROMO</span>
             <span className="text-orange-500">▸</span>
-            <span> BÂTIMENTS VINCI & GALILÉE</span>
+            <span> PAR LE BDE POUR LES ÉLÈVES</span>
             <span className="text-orange-500">▸</span>
             <span>GESTION PAR CODE SECRET</span>
-          </span>
-          <span className="flex items-center gap-2 text-stone-300 font-medium">
-            <span className="w-2 h-2 rounded-full bg-orange-500" />
-            <span>{listings.length} apparts en ligne</span>
           </span>
         </div>
       </div>
