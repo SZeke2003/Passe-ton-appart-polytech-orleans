@@ -1532,11 +1532,9 @@ useEffect(() => {
 
                   <div className="px-2 pt-3 pb-1 border-t border-stone-100 flex items-center justify-between">
                     <div className="flex items-center gap-2 min-w-0">
-                      <img
-                        src={listing.studentAvatar}
-                        alt={listing.studentName}
-                        className="w-6 h-6 rounded-full object-cover border border-orange-300 shrink-0"
-                      />
+                    <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-extrabold text-[10px] border border-orange-300 shrink-0">
+                      {getInitials(listing.studentName)}
+                    </div>
                       <span className="text-xs font-bold text-zinc-700 truncate">
                         {listing.studentName}{' '}
                         <span className="text-stone-400 font-normal">
@@ -1945,11 +1943,9 @@ useEffect(() => {
 
                 <div className="bg-orange-50/90 border border-orange-200 rounded-3xl p-5 relative">
                   <div className="flex items-center gap-3 mb-3">
-                    <img
-                      src={selectedListing.studentAvatar}
-                      alt={selectedListing.studentName}
-                      className="w-11 h-11 rounded-full object-cover border-2 border-orange-500"
-                    />
+                  <div className="w-11 h-11 rounded-full bg-orange-600 text-white flex items-center justify-center font-extrabold text-sm border-2 border-orange-500 shrink-0">
+                    {getInitials(selectedListing.studentName)}
+                  </div>
                     <div>
                       <span className="text-xs font-extrabold uppercase tracking-wider text-orange-700 block">
                         Le vrai retour sans filtre de{' '}
